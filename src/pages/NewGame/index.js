@@ -4,6 +4,7 @@ import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
+import IconButton from "../../components/IconButton";
 import Button from "../../components/Button";
 import PlayersList from "../../components/PlayersList";
 import SelectPlayerDialog from "../../components/SelectPlayerDialog";
@@ -59,14 +60,23 @@ const NewGame = () => {
               Players
             </Title>
 
-            <Button
-              type="button"
-              className={s.addPlayerButton}
-              onClick={() => setPlayersSelectVisible(!playersSelectVisible)}
-              disabled={playersInGame.length === 4}
-            >
-              <FiPlusCircle className={s.addPlayerButtonIcon} />
-            </Button>
+            {!!playersInGame.length ? (
+              <Button
+                type="button"
+                small
+                onClick={() => setPlayersSelectVisible(!playersSelectVisible)}
+              >
+                Change
+              </Button>
+            ) : (
+              <IconButton
+                type="button"
+                onClick={() => setPlayersSelectVisible(!playersSelectVisible)}
+                disabled={playersInGame.length === 4}
+              >
+                <FiPlusCircle className={s.addPlayerButtonIcon} />
+              </IconButton>
+            )}
           </div>
 
           <PlayersList
