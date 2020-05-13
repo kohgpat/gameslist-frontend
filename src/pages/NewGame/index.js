@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiPlusCircle, FiXCircle, FiArrowUpCircle } from "react-icons/fi";
+import { FiPlusCircle, FiArrowUpCircle } from "react-icons/fi";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
@@ -65,11 +65,7 @@ const NewGame = () => {
               onClick={() => setPlayersSelectVisible(!playersSelectVisible)}
               disabled={playersInGame.length === 4}
             >
-              {playersSelectVisible ? (
-                <FiXCircle className={s.addPlayerButtonIcon} />
-              ) : (
-                <FiPlusCircle className={s.addPlayerButtonIcon} />
-              )}
+              <FiPlusCircle className={s.addPlayerButtonIcon} />
             </Button>
           </div>
 
