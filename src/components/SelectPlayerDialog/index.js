@@ -25,7 +25,11 @@ const SelectPlayerDialog = ({
         onDismiss={onDismiss}
         label="Select players for the game"
       >
-        <DialogBar title="Select a player" onDismiss={onDismiss} />
+        <DialogBar
+          title="Select a player"
+          onDismiss={onDismiss}
+          withDoneCondition={!!playersInGame.length}
+        />
 
         <div className={s.inputWrapper}>
           <Input
