@@ -101,7 +101,7 @@ const NewGame = () => {
 
           <SelectPlayerDialog
             isVisible={playersSelectVisible}
-            setVisible={setPlayersSelectVisible}
+            onDismiss={() => setPlayersSelectVisible(false)}
             players={players}
             playersInGame={playersInGame}
             onSelect={(player) => togglePlayerInGame(player)}

@@ -10,7 +10,7 @@ import s from "./index.module.css";
 
 const SelectPlayerDialog = ({
   isVisible,
-  setVisible,
+  onDismiss,
   players,
   playersInGame,
   onSelect,
@@ -22,13 +22,10 @@ const SelectPlayerDialog = ({
     <>
       <Dialog
         isVisible={isVisible}
-        onDismiss={() => setVisible(false)}
+        onDismiss={onDismiss}
         label="Select players for the game"
       >
-        <DialogBar
-          title="Select a player"
-          onDismiss={() => setVisible(!isVisible)}
-        />
+        <DialogBar title="Select a player" onDismiss={onDismiss} />
 
         <div className={s.inputWrapper}>
           <Input
