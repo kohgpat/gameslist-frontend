@@ -1,0 +1,9 @@
+.content {
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.submitButton {
+  margin-top: 1rem;
+}

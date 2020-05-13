@@ -1,0 +1,9 @@
+.player {
+  padding: 1rem;
+  border: 1px solid #f1f1f1;
+  width: 100%;
+}
+
+.playerSelected {
+  background-color: #f1f1f1;
+}

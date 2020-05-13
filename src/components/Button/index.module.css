@@ -1,0 +1,20 @@
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  border: 1px solid #000;
+  background-color: #ffffff;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.buttonIcon {
+  margin-right: 0.5rem;
+}
+
+.buttonDisabled {
+  border: 1px solid #f1f1f1;
+  color: #f1f1f1;
+}

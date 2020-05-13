@@ -1,0 +1,37 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f1f1f1;
+  position: fixed;
+  width: 100%;
+}
+
+.topbarNav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.topbarNavLinkHome {
+  margin-right: auto;
+}
+
+.topbarNavLinkNewGame {
+  margin-left: auto;
+}
+
+.topbarNavLinkNewGame,
+.topbarNavLinkHome,
+.topbarNavLink {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.topbarNavLink:not(:last-child) {
+  margin-right: 1rem;
+}

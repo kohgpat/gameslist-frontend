@@ -1,0 +1,24 @@
+.list {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listItem:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.emptyListMessage {
+  font-size: 1rem;
+}
+
+.removeButton {
+  margin-left: 1rem;
+}

@@ -1,0 +1,32 @@
+.sectionBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.sectionBarTitle {
+  font-weight: 500;
+}
+
+.sectionBarModal {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.inputWrapper {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.list {
+  max-height: calc(100vh - 146px);
+  width: 100%;
+  overflow: auto;
+  padding: 0;
+}
+
+.listItem {}

@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.listItem {
+  list-style: none;
+}
+
+.listItem:not(:last-child) {
+  margin-bottom: 1rem;
+}
