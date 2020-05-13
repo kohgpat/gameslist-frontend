@@ -1,0 +1,14 @@
+.content {
+  padding: 1rem;
+}
+
+.content > p {
+  line-height: 1.2;
+}
+
+.validationError {
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  border-radius: 0.25rem;
+}

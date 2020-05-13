@@ -7,6 +7,7 @@ import Title from "../../components/Title";
 import Button from "../../components/Button";
 import PlayersList from "../../components/PlayersList";
 import SelectPlayerDialog from "../../components/SelectPlayerDialog";
+import ValidationDialog from "../../components/ValidationDialog";
 import { players } from "../../constants";
 import s from "./index.module.css";
 
@@ -104,6 +105,13 @@ const NewGame = () => {
             players={players}
             playersInGame={playersInGame}
             onSelect={(player) => togglePlayerInGame(player)}
+          />
+
+          <ValidationDialog
+            isVisible={validationDialogVisible}
+            onDismiss={() => setValidationDialogVisible(false)}
+            winner={winner}
+            playersInGame={playersInGame}
           />
         </section>
       </Main>
