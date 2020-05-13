@@ -7,3 +7,7 @@
 .playerSelected {
   background-color: #f1f1f1;
 }
+
+.playerRoundBorders {
+  border-radius: 0.25rem;
+}

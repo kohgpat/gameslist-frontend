@@ -2,10 +2,19 @@ import React from "react";
 import cn from "classnames";
 import s from "./index.module.css";
 
-const PlayerShort = ({ player, selected, onClick }) => {
+const PlayerShort = ({
+  player,
+  selected,
+  onClick,
+  roundBorders,
+}) => {
   return (
     <div
-      className={cn(s.player, selected && s.playerSelected)}
+      className={cn(
+        s.player,
+        selected && s.playerSelected,
+        roundBorders && s.playerRoundBorders
+      )}
       onClick={() => onClick(player)}
     >
       <span className={s.playerName}>{player.name}</span>
@@ -14,7 +23,7 @@ const PlayerShort = ({ player, selected, onClick }) => {
 };
 
 PlayerShort.defaultProps = {
-  onClick: () => {}
+  onClick: () => {},
 };
 
 export default PlayerShort;

@@ -11,6 +11,7 @@ const PlayersList = ({ players, selected, onClick }) => {
             player={player}
             selected={selected && selected.id === player.id}
             onClick={onClick}
+            roundBorders
           />
         </li>
       ))}
