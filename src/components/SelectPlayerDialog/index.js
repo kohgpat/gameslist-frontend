@@ -4,7 +4,6 @@ import Dialog from "../Dialog";
 import DialogBar from "../DialogBar";
 import AddPlayerDialog from "../AddPlayerDialog";
 import IconButton from "../IconButton";
-import Button from "../Button";
 import Input from "../Input";
 import PlayerShort from "../PlayerShort";
 import s from "./index.module.css";
