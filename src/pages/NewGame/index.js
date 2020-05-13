@@ -90,12 +90,7 @@ const NewGame = () => {
 
           <p className={s.helpText}>Select a winner and submit game results</p>
 
-          <Button
-            type="button"
-            // disabled={!playersInGame.length || !winner}
-            icon={FiArrowUpCircle}
-            onClick={submitGame}
-          >
+          <Button type="button" icon={FiArrowUpCircle} onClick={submitGame}>
             Submit game
           </Button>
 
