@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import s from "./index.module.css";
 
-const PlayerShort = ({ player, selected, onClick, roundBorders }) => {
+const PlayerCard = ({ player, selected, onClick, roundBorders }) => {
   return (
     <div
       className={cn(
@@ -17,8 +17,8 @@ const PlayerShort = ({ player, selected, onClick, roundBorders }) => {
   );
 };
 
-PlayerShort.defaultProps = {
+PlayerCard.defaultProps = {
   onClick: () => {},
 };
 
-export default PlayerShort;
+export default PlayerCard;

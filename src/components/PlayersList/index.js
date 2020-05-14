@@ -1,5 +1,5 @@
 import React from "react";
-import PlayerShort from "../PlayerShort";
+import PlayerCard from "../PlayerCard";
 import s from "./index.module.css";
 
 const PlayersList = ({ players, selected, onClick }) => {
@@ -7,7 +7,7 @@ const PlayersList = ({ players, selected, onClick }) => {
     <ul className={s.list}>
       {players.map((player) => (
         <li key={player.id} className={s.listItem}>
-          <PlayerShort
+          <PlayerCard
             player={player}
             selected={selected && selected.id === player.id}
             onClick={onClick}

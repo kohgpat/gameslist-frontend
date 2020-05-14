@@ -5,7 +5,7 @@ import DialogBar from "../DialogBar";
 import AddPlayerDialog from "../AddPlayerDialog";
 import IconButton from "../IconButton";
 import Input from "../Input";
-import PlayerShort from "../PlayerShort";
+import PlayerCard from "../PlayerCard";
 import s from "./index.module.css";
 
 const SelectPlayerDialog = ({
@@ -57,7 +57,7 @@ const SelectPlayerDialog = ({
             )
             .map((player, index) => (
               <li tabIndex="0" key={player.id}>
-                <PlayerShort
+                <PlayerCard
                   player={player}
                   onClick={onSelect}
                   selected={playersInGame.includes(player)}
