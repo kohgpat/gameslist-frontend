@@ -6,6 +6,7 @@
   padding: 0;
   background-color: #ffffff;
   border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .buttonBig {
