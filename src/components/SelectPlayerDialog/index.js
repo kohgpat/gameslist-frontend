@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import cn from "classnames";
 import { FiPlusCircle } from "react-icons/fi";
 import Dialog from "../Dialog";
 import DialogBar from "../DialogBar";
 import AddPlayerDialog from "../AddPlayerDialog";
 import IconButton from "../IconButton";
 import Input from "../Input";
-import PlayerCard from "../PlayerCard";
 import s from "./index.module.css";
 
 const SelectPlayerDialog = ({
@@ -55,13 +55,18 @@ const SelectPlayerDialog = ({
                 !input ||
                 player.name.toLowerCase().includes(input.toLowerCase())
             )
-            .map((player, index) => (
-              <li tabIndex="0" key={player.id}>
-                <PlayerCard
-                  player={player}
-                  onClick={onSelect}
-                  selected={playersInGame.includes(player)}
-                />
+            .map((player) => (
+              <li key={player.id} className={s.listItem}>
+                <button
+                  type="button"
+                  className={cn(
+                    s.listItemPlayer,
+                    playersInGame.includes(player) && s.listItemPlayerSelected
+                  )}
+                  onClick={() => onSelect(player)}
+                >
+                  {player.name}
+                </button>
               </li>
             ))}
         </ul>

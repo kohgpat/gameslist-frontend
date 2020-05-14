@@ -27,6 +27,24 @@
   width: 100%;
   overflow: auto;
   padding: 0;
+  margin-top: 0;
 }
 
-.listItem {}
+.listItem {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.listItemPlayer {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  background-color: #fff;
+}
+
+.listItemPlayerSelected {
+  background-color: #f1f1f1;
+}
