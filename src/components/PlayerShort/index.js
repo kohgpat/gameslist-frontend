@@ -2,12 +2,7 @@ import React from "react";
 import cn from "classnames";
 import s from "./index.module.css";
 
-const PlayerShort = ({
-  player,
-  selected,
-  onClick,
-  roundBorders,
-}) => {
+const PlayerShort = ({ player, selected, onClick, roundBorders }) => {
   return (
     <div
       className={cn(
