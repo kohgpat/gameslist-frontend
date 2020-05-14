@@ -1,0 +1,31 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.listItem {
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+.emptyListMessage {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.player {
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}
+
+.playerSelected {
+  background-color: #f1f1f1;
+}

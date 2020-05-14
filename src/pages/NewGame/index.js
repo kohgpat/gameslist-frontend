@@ -6,7 +6,7 @@ import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import IconButton from "../../components/IconButton";
 import Button from "../../components/Button";
-import PlayersList from "../../components/PlayersList";
+import GamePlayersList from "../../components/GamePlayersList";
 import SelectPlayerDialog from "../../components/SelectPlayerDialog";
 import ValidationDialog from "../../components/ValidationDialog";
 import { players } from "../../constants";
@@ -79,11 +79,10 @@ const NewGame = () => {
             )}
           </div>
 
-          <PlayersList
+          <GamePlayersList
             players={playersInGame}
-            selected={winner}
-            onClick={setWinner}
-            removeFromGame={removeFromGame}
+            winner={winner}
+            onSelect={setWinner}
           />
 
           <section>
