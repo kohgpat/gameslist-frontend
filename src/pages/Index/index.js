@@ -1,4 +1,5 @@
 import React from "react";
+import { GamesProvider, useGames } from "../../contexts/Games";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
@@ -25,27 +26,9 @@ const players = [
   },
 ];
 
-let id = 1;
-
-const generateGames = () => {
-  const games = [];
-
-  for (let i = 0; i < 10; i++) {
-    const game = {
-      players: players,
-      id: id++,
-      winner: 1,
-    };
-
-    games.push(game);
-  }
-
-  return games;
-};
-
-const games = generateGames();
-
 const Index = () => {
+  const { games } = useGames();
+
   return (
     <Screen>
       <Topbar />
@@ -64,4 +47,12 @@ const Index = () => {
   );
 };
 
-export default Index;
+const IndexPage = () => {
+  return (
+    <GamesProvider>
+      <Index />
+    </GamesProvider>
+  );
+};
+
+export default IndexPage;
