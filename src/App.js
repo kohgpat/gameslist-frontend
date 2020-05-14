@@ -4,8 +4,7 @@ import Index from "./pages/Index";
 import Players from "./pages/Players";
 import Games from "./pages/Games";
 import NewGame from "./pages/NewGame";
-// import logo from './logo.svg';
-// import './App.css';
+import Rating from "./pages/Rating";
 
 function App() {
   return (
@@ -21,6 +20,10 @@ function App() {
 
         <Route path="/games">
           <Games />
+        </Route>
+
+        <Route path="/rating">
+          <Rating />
         </Route>
 
         <Route path="/">
