@@ -4,25 +4,7 @@ import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import PlayersList from "../../components/PlayersList";
-
-const players = [
-  {
-    id: 1,
-    name: "Alice",
-  },
-  {
-    id: 2,
-    name: "Bob",
-  },
-  {
-    id: 3,
-    name: "Mark",
-  },
-  {
-    id: 4,
-    name: "Walter",
-  },
-];
+import { players } from "../../constants";
 
 const Players = () => {
   return (
