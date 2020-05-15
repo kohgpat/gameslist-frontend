@@ -6,7 +6,7 @@ import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import PlayersList from "../../components/PlayersList";
-import GameList from "../../components/GameList";
+import GamesList from "../../components/GamesList";
 
 const Index = () => {
   const { games } = useGames();
@@ -23,7 +23,7 @@ const Index = () => {
 
         <section>
           <Title as="h4">Recent Games</Title>
-          <GameList games={games} />
+          <GamesList games={games} />
         </section>
       </Main>
     </Screen>

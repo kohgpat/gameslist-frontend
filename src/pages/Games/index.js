@@ -3,7 +3,7 @@ import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
-import GameList from "../../components/GameList";
+import GamesList from "../../components/GamesList";
 
 const players = [
   {
@@ -33,7 +33,7 @@ const generateGames = () => {
     const game = {
       players: players,
       id: id++,
-      winner: 1
+      winner: 1,
     };
 
     games.push(game);
@@ -51,7 +51,7 @@ const Games = () => {
       <Main>
         <section>
           <Title as="h4">Games</Title>
-          <GameList games={games} />
+          <GamesList games={games} />
         </section>
       </Main>
     </Screen>

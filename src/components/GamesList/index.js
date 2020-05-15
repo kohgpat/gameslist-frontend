@@ -2,7 +2,7 @@ import React from "react";
 import GameResult from "../GameResult";
 import s from "./index.module.css";
 
-const GameList = ({ games }) => {
+const GamesList = ({ games }) => {
   return (
     <ul className={s.list}>
       {games.map((game) => (
@@ -14,8 +14,8 @@ const GameList = ({ games }) => {
   );
 };
 
-GameList.defaultProps = {
+GamesList.defaultProps = {
   games: [],
 };
 
-export default GameList;
+export default GamesList;
