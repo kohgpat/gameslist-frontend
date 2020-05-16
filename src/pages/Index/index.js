@@ -1,6 +1,8 @@
 import React from "react";
-import { GamesProvider, useGames } from "../../contexts/Games";
-import { PlayersProvider, usePlayers } from "../../contexts/Players";
+import { GamesProvider } from "../../contexts/Games";
+import { PlayersProvider } from "../../contexts/Players";
+import { useGames } from "../../modules/Games/useGames";
+import { useTopPlayers } from "../../modules/Players/usePlayers";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
@@ -10,7 +12,7 @@ import GamesList from "../../components/GamesList";
 
 const Index = () => {
   const { games } = useGames();
-  const { topPlayers } = usePlayers();
+  const { topPlayers } = useTopPlayers();
 
   return (
     <Screen>

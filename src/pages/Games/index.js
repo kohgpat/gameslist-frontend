@@ -1,50 +1,15 @@
 import React from "react";
+import { GamesProvider } from "../../contexts/Games";
+import { useGames } from "../../modules/Games/useGames";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import GamesList from "../../components/GamesList";
 
-const players = [
-  {
-    id: 1,
-    name: "Alice",
-  },
-  {
-    id: 2,
-    name: "Bob",
-  },
-  {
-    id: 3,
-    name: "Mark",
-  },
-  {
-    id: 4,
-    name: "Walter",
-  },
-];
-
-let id = 1;
-
-const generateGames = () => {
-  const games = [];
-
-  for (let i = 0; i < 20; i++) {
-    const game = {
-      players: players,
-      id: id++,
-      winner: 1,
-    };
-
-    games.push(game);
-  }
-
-  return games;
-};
-
-const games = generateGames();
-
 const Games = () => {
+  const { games } = useGames();
+
   return (
     <Screen>
       <Topbar />
@@ -58,4 +23,12 @@ const Games = () => {
   );
 };
 
-export default Games;
+const GamesPage = () => {
+  return (
+    <GamesProvider>
+      <Games />
+    </GamesProvider>
+  );
+};
+
+export default GamesPage;
