@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAddPlayer } from "../../modules/Players/useAddPlayer";
 import Dialog from "../Dialog";
 import DialogBar from "../DialogBar";
 import Input from "../Input";
@@ -7,13 +8,18 @@ import s from "./index.module.css";
 
 const AddPlayerDialog = ({ isVisible, onDismiss }) => {
   const [name, setName] = useState("");
+  const { addPlayer } = useAddPlayer();
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (!name.length) {
       return;
     }
+
+    addPlayer({
+      name,
+    });
 
     setName("");
     onDismiss();
@@ -28,7 +34,7 @@ const AddPlayerDialog = ({ isVisible, onDismiss }) => {
           <Input
             placeholder="Enter player name"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <Button

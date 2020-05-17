@@ -1,10 +1,10 @@
 import { usePlayers as usePlayersContextHook } from "../../contexts/Players";
 
-export const usePlayers = () => {
-  const { players } = usePlayersContextHook();
+export const useAddPlayer = () => {
+  const { addPlayer } = usePlayersContextHook();
 
   return {
-    players,
+    addPlayer,
     isLoading: false,
     error: false,
   };

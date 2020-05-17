@@ -25,7 +25,14 @@ const PlayersProvider = ({ children }) => {
   });
 
   const addPlayer = (player) => {
-    dispatch({ type: "ADD_PLAYER", player });
+    const lastId = players.sort((a, b) => b.id - a.id)[0].id;
+
+    const nextId = lastId + 1;
+
+    dispatch({
+      type: "ADD_PLAYER",
+      player: { ...player, id: nextId, stats: { wins: 0 } },
+    });
   };
 
   const getPlayers = (state) => {
@@ -34,7 +41,7 @@ const PlayersProvider = ({ children }) => {
 
   const getTopPlayers = (state) => {
     const players = getPlayers(state);
-    return players.sort((a, b) => a.stats.wins > b.stats.wins).slice(0, 5);
+    return players.sort((a, b) => b.stats.wins > a.stats.wins).slice(0, 5);
   };
 
   return (

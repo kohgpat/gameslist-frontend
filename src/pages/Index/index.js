@@ -2,7 +2,7 @@ import React from "react";
 import { GamesProvider } from "../../contexts/Games";
 import { PlayersProvider } from "../../contexts/Players";
 import { useGames } from "../../modules/Games/useGames";
-import { useTopPlayers } from "../../modules/Players/usePlayers";
+import { useTopPlayers } from "../../modules/Players/useTopPlayers";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
