@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import { FiPlusCircle, FiArrowUpCircle } from "react-icons/fi";
 import { GamesProvider } from "../../contexts/Games";
 import { PlayersProvider } from "../../contexts/Players";
+import { usePlayers } from "../../modules/Players/usePlayers";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
@@ -11,7 +12,6 @@ import Button from "../../components/Button";
 import GamePlayersList from "../../components/GamePlayersList";
 import SelectPlayerDialog from "../../components/SelectPlayerDialog";
 import ValidationDialog from "../../components/ValidationDialog";
-import { players } from "../../constants";
 import s from "./index.module.css";
 
 const reducer = (state, action) => {
@@ -68,6 +68,8 @@ const reducer = (state, action) => {
 };
 
 const NewGame = () => {
+  const { players } = usePlayers();
+
   const [state, dispatch] = useReducer(reducer, {
     playersSelectVisible: false,
     validationDialogVisible: false,
