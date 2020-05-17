@@ -1,7 +1,5 @@
 import React from "react";
 import { FiPlusCircle, FiArrowUpCircle } from "react-icons/fi";
-import { GamesProvider } from "../../contexts/Games";
-import { PlayersProvider } from "../../contexts/Players";
 import { useNewGame } from "../../modules/NewGame/useNewGame";
 import { usePlayers } from "../../modules/Players/usePlayers";
 import Screen from "../../components/Screen";
@@ -97,14 +95,4 @@ const NewGame = () => {
   );
 };
 
-const NewGamePage = () => {
-  return (
-    <GamesProvider>
-      <PlayersProvider>
-        <NewGame />
-      </PlayersProvider>
-    </GamesProvider>
-  );
-};
-
-export default NewGamePage;
+export default NewGame;

@@ -1,5 +1,4 @@
 import React from "react";
-import { PlayersProvider } from "../../contexts/Players";
 import { usePlayers } from "../../modules/Players/usePlayers";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
@@ -23,12 +22,4 @@ const Players = () => {
   );
 };
 
-const PlayersPage = () => {
-  return (
-    <PlayersProvider>
-      <Players />
-    </PlayersProvider>
-  );
-};
-
-export default PlayersPage;
+export default Players;

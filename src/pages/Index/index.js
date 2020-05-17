@@ -1,6 +1,4 @@
 import React from "react";
-import { GamesProvider } from "../../contexts/Games";
-import { PlayersProvider } from "../../contexts/Players";
 import { useGames } from "../../modules/Games/useGames";
 import { useTopPlayers } from "../../modules/Players/useTopPlayers";
 import Screen from "../../components/Screen";
@@ -32,14 +30,4 @@ const Index = () => {
   );
 };
 
-const IndexPage = () => {
-  return (
-    <GamesProvider>
-      <PlayersProvider>
-        <Index />
-      </PlayersProvider>
-    </GamesProvider>
-  );
-};
-
-export default IndexPage;
+export default Index;

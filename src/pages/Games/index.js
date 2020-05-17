@@ -1,5 +1,4 @@
 import React from "react";
-import { GamesProvider } from "../../contexts/Games";
 import { useGames } from "../../modules/Games/useGames";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
@@ -23,12 +22,5 @@ const Games = () => {
   );
 };
 
-const GamesPage = () => {
-  return (
-    <GamesProvider>
-      <Games />
-    </GamesProvider>
-  );
-};
 
-export default GamesPage;
+export default Games;
