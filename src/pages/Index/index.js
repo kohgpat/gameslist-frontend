@@ -9,7 +9,7 @@ import PlayersList from "../../components/PlayersList";
 import GamesList from "../../components/GamesList";
 
 const Index = () => {
-  const { games } = useGames();
+  const { data: games } = useGames();
   const { topPlayers } = useTopPlayers();
 
   return (

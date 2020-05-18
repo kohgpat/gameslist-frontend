@@ -1,11 +1,6 @@
-import { useGames as useGamesContextHook } from "../../contexts/Games";
+import { useQuery } from "react-query";
+import { getGames } from "../../api/games";
 
 export const useGames = () => {
-  const { games } = useGamesContextHook();
-
-  return {
-    games,
-    isLoading: false,
-    error: false,
-  };
+  return useQuery("games", getGames);
 };
