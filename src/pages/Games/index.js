@@ -7,7 +7,7 @@ import Title from "../../components/Title";
 import GamesList from "../../components/GamesList";
 
 const Games = () => {
-  const { games } = useGames();
+  const { data: games } = useGames();
 
   return (
     <Screen>
