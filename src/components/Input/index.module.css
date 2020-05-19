@@ -4,4 +4,9 @@
   padding: 0.5rem 1rem;
   margin-right: 1rem;
   width: 100%;
+
+  /* Remove shadow on iOS Safari */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
