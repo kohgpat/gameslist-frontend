@@ -16,10 +16,6 @@ const reducer = (state, action) => {
       };
     }
     case "ADD_PLAYER_TO_GAME": {
-      if (state.playersInGame.length === 4) {
-        return state;
-      }
-
       return {
         ...state,
         playersInGame: [...state.playersInGame, action.player],
