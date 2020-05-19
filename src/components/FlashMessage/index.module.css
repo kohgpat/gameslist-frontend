@@ -1,0 +1,44 @@
+.flashMessage {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #438FE1;
+  z-index: 1;
+  min-height: 72px; /* Topbar height */
+}
+
+.flashMessageSuccess {
+  background-color: #47BD8B;
+}
+
+.flashMessageFailure {
+  background-color: #F94E6F;
+}
+
+.message {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.closeButton {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
+}
+
+.closeButtonIcon {
+  font-size: 1.5rem;
+}
