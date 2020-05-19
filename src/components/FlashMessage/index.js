@@ -1,10 +1,17 @@
 import React from "react";
 import cn from "classnames";
 import { FiXCircle } from "react-icons/fi";
+import { useFlashMessage } from "../../modules/FlashMessage/useFlashMessage";
 import IconButton from "../IconButton";
 import s from "./index.module.css";
 
-const FlashMessage = ({ variant, message, onClose }) => {
+const FlashMessage = () => {
+  const { isVisible, message, variant, hideMessage } = useFlashMessage();
+
+  if (!isVisible) {
+    return null;
+  }
+
   return (
     <div
       className={cn({
@@ -14,7 +21,7 @@ const FlashMessage = ({ variant, message, onClose }) => {
       })}
     >
       <span className={s.message}>{message}</span>
-      <IconButton className={s.closeButton} type="button" onClick={onClose}>
+      <IconButton className={s.closeButton} type="button" onClick={hideMessage}>
         <FiXCircle className={s.closeButtonIcon} />
       </IconButton>
     </div>

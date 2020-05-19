@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { FlashMessageProvider } from "./contexts/FlashMessage";
+import FlashMessage from "./components/FlashMessage";
 import Index from "./pages/Index";
 import Players from "./pages/Players";
 import Games from "./pages/Games";
@@ -8,29 +10,33 @@ import Rating from "./pages/Rating";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/new-game">
-          <NewGame />
-        </Route>
+    <FlashMessageProvider>
+      <FlashMessage />
 
-        <Route path="/players">
-          <Players />
-        </Route>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/new-game">
+            <NewGame />
+          </Route>
 
-        <Route path="/games">
-          <Games />
-        </Route>
+          <Route path="/players">
+            <Players />
+          </Route>
 
-        <Route path="/rating">
-          <Rating />
-        </Route>
+          <Route path="/games">
+            <Games />
+          </Route>
 
-        <Route path="/">
-          <Index />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+          <Route path="/rating">
+            <Rating />
+          </Route>
+
+          <Route path="/">
+            <Index />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </FlashMessageProvider>
   );
 }
 
