@@ -14,7 +14,7 @@ import ValidationDialog from "../../components/ValidationDialog";
 import s from "./index.module.css";
 
 const NewGame = () => {
-  const { players } = usePlayers();
+  const { data: players } = usePlayers();
   const {
     playersInGame,
     winner,

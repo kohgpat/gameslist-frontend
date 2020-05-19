@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { useCreateNewGame } from "../../modules/NewGame/useCreateNewGame";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -61,6 +62,8 @@ export const useNewGame = () => {
     winner: undefined,
   });
 
+  const [createNewGame] = useCreateNewGame();
+
   const addToGame = (player) => {
     dispatch({ type: "ADD_PLAYER_TO_GAME", player });
   };
@@ -105,7 +108,13 @@ export const useNewGame = () => {
   const submitGame = () => {
     if (!state.playersInGame.length || !state.winner) {
       dispatch({ type: "SET_VALIDATION_DIALOG_VISIBLE", visible: true });
+      return;
     }
+
+    createNewGame({
+      players: state.playersInGame,
+      winner: state.winner,
+    });
   };
 
   return {

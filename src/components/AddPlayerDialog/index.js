@@ -8,7 +8,7 @@ import s from "./index.module.css";
 
 const AddPlayerDialog = ({ isVisible, onDismiss }) => {
   const [name, setName] = useState("");
-  const { addPlayer } = useAddPlayer();
+  const [addPlayer] = useAddPlayer();
 
   const onSubmit = (e) => {
     e.preventDefault();

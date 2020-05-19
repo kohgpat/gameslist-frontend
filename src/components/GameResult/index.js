@@ -3,7 +3,7 @@ import Title from "../Title";
 import s from "./index.module.css";
 
 const GameResult = ({ game }) => {
-  const winner = game.players.find((player) => player.id === game.winner);
+  const winner = game.players.find((player) => player.id === game.winner.id);
 
   return (
     <div className={s.gameResult}>

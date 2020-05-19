@@ -10,7 +10,7 @@ import GamesList from "../../components/GamesList";
 
 const Index = () => {
   const { data: games } = useGames();
-  const { topPlayers } = useTopPlayers();
+  const { data: topPlayers } = useTopPlayers();
 
   return (
     <Screen>

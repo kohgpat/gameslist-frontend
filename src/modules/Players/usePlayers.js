@@ -1,11 +1,6 @@
-import { usePlayers as usePlayersContextHook } from "../../contexts/Players";
+import { useQuery } from "react-query";
+import { getPlayers } from "../../api/players";
 
 export const usePlayers = () => {
-  const { players } = usePlayersContextHook();
-
-  return {
-    players,
-    isLoading: false,
-    error: false,
-  };
+  return useQuery("players", getPlayers);
 };

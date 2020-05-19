@@ -1,27 +1,16 @@
-import { delay } from "../../utils/delay";
-import { players } from "../../constants";
-
-let id = 1;
-
-const generateGames = () => {
-  const games = [];
-
-  for (let i = 0; i < 10; i++) {
-    const game = {
-      players,
-      id: id++,
-      winner: 1,
-    };
-
-    games.push(game);
-  }
-
-  return games;
-};
-
-const games = generateGames();
+import axios from "axios";
 
 export const getGames = async () => {
-  const data = await delay(() => games, 300);
+  const { data } = await axios("http://localhost:3001/games");
+  return data;
+};
+
+export const getGame = async (id) => {
+  const { data } = await axios("http://localhost:3001/games/" + id);
+  return data;
+};
+
+export const createGame = async (game) => {
+  const { data } = await axios.post("http://localhost:3001/games", game);
   return data;
 };

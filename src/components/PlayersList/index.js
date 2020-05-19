@@ -2,7 +2,7 @@ import React from "react";
 import PlayerCard from "../PlayerCard";
 import s from "./index.module.css";
 
-const PlayersList = ({ players, selected, onClick }) => {
+const PlayersList = ({ players, selected, onClick, emptyListMessage }) => {
   return (
     <ul className={s.list}>
       {players.map((player) => (
@@ -16,13 +16,15 @@ const PlayersList = ({ players, selected, onClick }) => {
         </li>
       ))}
 
-      {players.length === 0 && (
-        <span className={s.emptyListMessage}>
-          No players selected. Please add up to 4 players.
-        </span>
-      )}
+      {players.length === 0 && <span>{emptyListMessage}</span>}
     </ul>
   );
+};
+
+PlayersList.defaultProps = {
+  players: [],
+  emptyListMessage:
+    "No players found. You could add a player on the new game page.",
 };
 
 export default PlayersList;

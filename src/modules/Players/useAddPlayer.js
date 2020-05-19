@@ -1,11 +1,8 @@
-import { usePlayers as usePlayersContextHook } from "../../contexts/Players";
+import { useMutation } from "react-query";
+import { createPlayer } from "../../api/players";
 
 export const useAddPlayer = () => {
-  const { addPlayer } = usePlayersContextHook();
-
-  return {
-    addPlayer,
-    isLoading: false,
-    error: false,
-  };
+  return useMutation(createPlayer, {
+    refetchQueries: ["players"],
+  });
 };

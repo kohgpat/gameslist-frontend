@@ -14,7 +14,3 @@
 .listItem:not(:last-child) {
   margin-bottom: 1rem;
 }
-
-.emptyListMessage {
-  font-size: 1rem;
-}

@@ -1,12 +1,14 @@
 import React from "react";
+import { usePlayers } from "../../modules/Players/usePlayers";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import PlayersList from "../../components/PlayersList";
-import { players } from "../../constants";
 
 const Rating = () => {
+  const { data: players } = usePlayers();
+
   return (
     <Screen>
       <Topbar />
