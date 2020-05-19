@@ -7,7 +7,7 @@ import Title from "../../components/Title";
 import PlayersList from "../../components/PlayersList";
 
 const Players = () => {
-  const { players } = usePlayers();
+  const { data: players } = usePlayers();
 
   return (
     <Screen>
