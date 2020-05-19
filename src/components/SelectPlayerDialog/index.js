@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import cn from "classnames";
 import { FiPlusCircle } from "react-icons/fi";
 import Dialog from "../Dialog";
@@ -17,6 +17,7 @@ const SelectPlayerDialog = ({
 }) => {
   const [input, setInput] = useState("");
   const [addPlayerDialogVisible, setAddPlayerDialogVisible] = useState(false);
+  const inputRef = useRef();
 
   return (
     <>
@@ -24,6 +25,7 @@ const SelectPlayerDialog = ({
         isVisible={isVisible}
         onDismiss={onDismiss}
         label="Select players for the game"
+        initialFocusRef={inputRef}
       >
         <DialogBar
           title="Select a player"
@@ -36,6 +38,7 @@ const SelectPlayerDialog = ({
             placeholder="Search by player name"
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            ref={inputRef}
           />
 
           <IconButton
