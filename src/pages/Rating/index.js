@@ -40,7 +40,7 @@ const Rating = () => {
           <PlayersList
             players={players}
             emptyListMessage={
-              hasSearchedPlayer && "Players not found for " + playerName
+              hasSearchedPlayer && "Players not found"
             }
             isFetching={isFetching}
             error={error}
