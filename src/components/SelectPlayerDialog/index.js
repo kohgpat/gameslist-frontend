@@ -40,7 +40,7 @@ const SelectPlayerDialog = ({
 
         <div className={s.inputWrapper}>
           <Input
-            placeholder="Search by player name"
+            placeholder="Search player by name"
             value={input}
             onChange={e => setInput(e.target.value)}
             ref={inputRef}
