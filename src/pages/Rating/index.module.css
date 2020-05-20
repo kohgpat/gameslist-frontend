@@ -1,0 +1,8 @@
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  margin: 1rem 0;
+}

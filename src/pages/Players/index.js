@@ -21,8 +21,7 @@ const Players = () => {
 
   useEffect(() => {
     playerNameRef.current.focus();
-    refetch();
-  }, [refetch]);
+  }, []);
 
   const onPlayerSearch = (e) => {
     e.preventDefault();
