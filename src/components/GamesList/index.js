@@ -1,8 +1,24 @@
 import React from "react";
 import GameResult from "../GameResult";
+import HelpMessage from "../HelpMessage";
+import LoadingItem from "../LoadingItem";
 import s from "./index.module.css";
 
-const GamesList = ({ games, emptyListMessage }) => {
+const GamesList = ({ games, emptyListMessage, isFetching, error }) => {
+  if (isFetching) {
+    return (
+      <>
+        <LoadingItem className={s.loadingItem} />
+        <LoadingItem className={s.loadingItem} />
+        <LoadingItem className={s.loadingItem} />
+      </>
+    );
+  }
+
+  if (error) {
+    return <HelpMessage className={s.spinner}>Error</HelpMessage>;
+  }
+
   return (
     <ul className={s.list}>
       {games.map((game) => (
