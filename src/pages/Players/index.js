@@ -6,7 +6,7 @@ import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import Spinner from "../../components/Spinner";
+import HelpMessage from "../../components/HelpMessage";
 import PlayersList from "../../components/PlayersList";
 import s from "./index.module.css";
 
@@ -47,9 +47,9 @@ const Players = () => {
           </form>
 
           {isFetching ? (
-            <Spinner className={s.spinner} />
+            <HelpMessage className={s.spinner}>Loading...</HelpMessage>
           ) : error ? (
-            "Error"
+            <HelpMessage className={s.spinner}>Error</HelpMessage>
           ) : (
             <PlayersList
               players={players}
