@@ -13,11 +13,16 @@ const SelectPlayerDialog = ({
   onDismiss,
   players,
   playersInGame,
-  onSelect,
+  onSelect
 }) => {
   const [input, setInput] = useState("");
   const [addPlayerDialogVisible, setAddPlayerDialogVisible] = useState(false);
   const inputRef = useRef();
+
+  const onPlayerSelect = player => {
+    onSelect(player);
+    setInput("");
+  };
 
   return (
     <>
@@ -37,7 +42,7 @@ const SelectPlayerDialog = ({
           <Input
             placeholder="Search by player name"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={e => setInput(e.target.value)}
             ref={inputRef}
           />
 
@@ -54,11 +59,11 @@ const SelectPlayerDialog = ({
         <ul className={s.list}>
           {players
             .filter(
-              (player) =>
+              player =>
                 !input ||
                 player.name.toLowerCase().includes(input.toLowerCase())
             )
-            .map((player) => (
+            .map(player => (
               <li key={player.id} className={s.listItem}>
                 <button
                   type="button"
@@ -66,7 +71,7 @@ const SelectPlayerDialog = ({
                     s.listItemPlayer,
                     playersInGame.includes(player) && s.listItemPlayerSelected
                   )}
-                  onClick={() => onSelect(player)}
+                  onClick={() => onPlayerSelect(player)}
                 >
                   {player.name}
                 </button>
@@ -85,7 +90,7 @@ const SelectPlayerDialog = ({
 
 SelectPlayerDialog.defaultProps = {
   players: [],
-  playersInGame: [],
+  playersInGame: []
 };
 
 export default SelectPlayerDialog;
