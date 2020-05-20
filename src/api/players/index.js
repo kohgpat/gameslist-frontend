@@ -1,7 +1,13 @@
 import axios from "axios";
+import qs from "query-string";
 
-export const getPlayers = async () => {
-  const { data } = await axios.get("http://localhost:3001/players");
+export const getPlayers = async (key, params) => {
+  const { data } = await axios.get("http://localhost:3001/players", {
+    params,
+    paramsSerializer: (params) => {
+      return qs.stringify(params, { skipNull: true, skipEmptyString: true });
+    },
+  });
   return data;
 };
 

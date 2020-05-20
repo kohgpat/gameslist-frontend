@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { getPlayers } from "../../api/players";
 
-export const usePlayers = () => {
-  return useQuery("players", getPlayers);
+export const usePlayers = (query) => {
+  return useQuery(["players", query], getPlayers, { manual: true });
 };
