@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useAddPlayer } from "../../modules/Players/useAddPlayer";
 import Dialog from "../Dialog";
 import DialogBar from "../DialogBar";
@@ -9,6 +9,7 @@ import s from "./index.module.css";
 const AddPlayerDialog = ({ isVisible, onDismiss }) => {
   const [name, setName] = useState("");
   const [addPlayer] = useAddPlayer();
+  const inputRef = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +27,12 @@ const AddPlayerDialog = ({ isVisible, onDismiss }) => {
   };
 
   return (
-    <Dialog isVisible={isVisible} onDismiss={onDismiss} label="Add new player">
+    <Dialog
+      isVisible={isVisible}
+      onDismiss={onDismiss}
+      label="Add new player"
+      initialFocusRef={inputRef}
+    >
       <DialogBar title="Add new player" onDismiss={onDismiss} />
 
       <div className={s.content}>
@@ -35,6 +41,7 @@ const AddPlayerDialog = ({ isVisible, onDismiss }) => {
             placeholder="Enter player name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            ref={inputRef}
           />
 
           <Button
