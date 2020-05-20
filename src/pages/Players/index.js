@@ -47,7 +47,7 @@ const Players = () => {
           </form>
 
           {isFetching ? (
-            <Spinner />
+            <Spinner className={s.spinner} />
           ) : (
             <PlayersList
               players={players}
