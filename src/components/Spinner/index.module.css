@@ -1,6 +1,7 @@
 .spinner {
   padding: 1rem;
-  background-color: #f1f1f1;
+  background-color: #ffffff;
+  border: 1px solid #f1f1f1;
   border-radius: 0.25rem;
 }
 

@@ -1,9 +1,10 @@
 import React from "react";
+import cn from "classnames";
 import s from "./index.module.css";
 
-const Spinner = () => {
+const Spinner = ({ className }) => {
   return (
-    <div className={s.spinner}>
+    <div className={cn(s.spinner, className)}>
       <span className={s.spinnerText}>Loading...</span>
     </div>
   );
