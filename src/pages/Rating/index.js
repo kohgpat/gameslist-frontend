@@ -4,8 +4,7 @@ import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import PlayersSearchForm from "../../components/PlayersSearchForm";
 import HelpMessage from "../../components/HelpMessage";
 import PlayersList from "../../components/PlayersList";
 import s from "./index.module.css";
@@ -36,14 +35,10 @@ const Rating = () => {
       <Main>
         <section>
           <Title as="h4">Top Players</Title>
-          <form className={s.form} onSubmit={onPlayerSearch}>
-            <Input
-              id="players-search"
-              placeholder="Search player by name"
-              ref={playerNameRef}
-            />
-            <Button type="submit">Search</Button>
-          </form>
+          <PlayersSearchForm
+            inputRef={playerNameRef}
+            onSubmit={onPlayerSearch}
+          />
 
           {isFetching ? (
             <HelpMessage className={s.spinner}>Loading...</HelpMessage>
