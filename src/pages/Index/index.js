@@ -7,6 +7,7 @@ import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import PlayersList from "../../components/PlayersList";
 import GamesList from "../../components/GamesList";
+import LoadingItem from "../../components/LoadingItem";
 import HelpMessage from "../../components/HelpMessage";
 import s from "./index.module.css";
 
@@ -30,7 +31,11 @@ const Index = () => {
           <Title as="h4">Top Players</Title>
 
           {isFetchingTopPlayers ? (
-            <HelpMessage className={s.spinner}>Loading...</HelpMessage>
+            <>
+              <LoadingItem className={s.loadingItem} />
+              <LoadingItem className={s.loadingItem} />
+              <LoadingItem className={s.loadingItem} />
+            </>
           ) : fetcingTopPlayersError ? (
             <HelpMessage className={s.spinner}>Error</HelpMessage>
           ) : (
@@ -40,9 +45,13 @@ const Index = () => {
 
         <section>
           <Title as="h4">Recent Games</Title>
-          
+
           {isFetchingGames ? (
-            <HelpMessage className={s.spinner}>Loading...</HelpMessage>
+            <>
+              <LoadingItem className={s.loadingItem} />
+              <LoadingItem className={s.loadingItem} />
+              <LoadingItem className={s.loadingItem} />
+            </>
           ) : fetcingGamesError ? (
             <HelpMessage className={s.spinner}>Error</HelpMessage>
           ) : (
