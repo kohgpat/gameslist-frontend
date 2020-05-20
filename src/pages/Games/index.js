@@ -7,7 +7,7 @@ import Title from "../../components/Title";
 import GamesList from "../../components/GamesList";
 
 const Games = () => {
-  const { data: games } = useGames();
+  const { data: games, isFetching, error } = useGames();
 
   return (
     <Screen>
@@ -15,12 +15,11 @@ const Games = () => {
       <Main>
         <section>
           <Title as="h4">Games</Title>
-          <GamesList games={games} />
+          <GamesList games={games} isFetching={isFetching} error={error} />
         </section>
       </Main>
     </Screen>
   );
 };
-
 
 export default Games;
