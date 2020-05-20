@@ -11,3 +11,7 @@
 .listItem:not(:last-child) {
   margin-bottom: 1rem;
 }
+
+.loadingItem {
+  margin-bottom: 1rem;
+}
