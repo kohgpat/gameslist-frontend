@@ -15,7 +15,7 @@ const Players = () => {
   const [playerName, setPlayersName] = useState("");
   const playerNameRef = useRef();
 
-  const { data: players, refetch, isFetching } = usePlayers({
+  const { data: players, refetch, isFetching, error } = usePlayers({
     name: playerName,
   });
 
@@ -48,6 +48,8 @@ const Players = () => {
 
           {isFetching ? (
             <Spinner className={s.spinner} />
+          ) : error ? (
+            "Error"
           ) : (
             <PlayersList
               players={players}
