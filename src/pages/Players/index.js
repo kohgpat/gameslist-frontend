@@ -46,7 +46,16 @@ const Players = () => {
             <Button type="submit">Search</Button>
           </form>
 
-          {isFetching ? <Spinner /> : <PlayersList players={players} />}
+          {isFetching ? (
+            <Spinner />
+          ) : (
+            <PlayersList
+              players={players}
+              emptyListMessage={
+                hasSearchedPlayer && "Players not found for " + playerName
+              }
+            />
+          )}
         </section>
       </Main>
     </Screen>
