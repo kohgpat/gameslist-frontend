@@ -7,10 +7,20 @@ import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import PlayersList from "../../components/PlayersList";
 import GamesList from "../../components/GamesList";
+import HelpMessage from "../../components/HelpMessage";
+import s from "./index.module.css";
 
 const Index = () => {
-  const { data: games } = useGames();
-  const { data: topPlayers } = useTopPlayers();
+  const {
+    data: games,
+    isFetching: isFetchingGames,
+    error: fetcingGamesError,
+  } = useGames();
+  const {
+    data: topPlayers,
+    isFetching: isFetchingTopPlayers,
+    error: fetcingTopPlayersError,
+  } = useTopPlayers();
 
   return (
     <Screen>
@@ -18,12 +28,26 @@ const Index = () => {
       <Main>
         <section>
           <Title as="h4">Top Players</Title>
-          <PlayersList players={topPlayers} />
+
+          {isFetchingTopPlayers ? (
+            <HelpMessage className={s.spinner}>Loading...</HelpMessage>
+          ) : fetcingTopPlayersError ? (
+            <HelpMessage className={s.spinner}>Error</HelpMessage>
+          ) : (
+            <PlayersList players={topPlayers} />
+          )}
         </section>
 
         <section>
           <Title as="h4">Recent Games</Title>
-          <GamesList games={games} />
+          
+          {isFetchingGames ? (
+            <HelpMessage className={s.spinner}>Loading...</HelpMessage>
+          ) : fetcingGamesError ? (
+            <HelpMessage className={s.spinner}>Error</HelpMessage>
+          ) : (
+            <GamesList games={games} />
+          )}
         </section>
       </Main>
     </Screen>
