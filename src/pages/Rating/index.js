@@ -5,9 +5,7 @@ import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import PlayersSearchForm from "../../components/PlayersSearchForm";
-import HelpMessage from "../../components/HelpMessage";
 import PlayersList from "../../components/PlayersList";
-import s from "./index.module.css";
 
 const Rating = () => {
   const [hasSearchedPlayer, setHasSearchedPlayer] = useState(false);
@@ -39,19 +37,14 @@ const Rating = () => {
             inputRef={playerNameRef}
             onSubmit={onPlayerSearch}
           />
-
-          {isFetching ? (
-            <HelpMessage className={s.spinner}>Loading...</HelpMessage>
-          ) : error ? (
-            <HelpMessage className={s.spinner}>Error</HelpMessage>
-          ) : (
-            <PlayersList
-              players={players}
-              emptyListMessage={
-                hasSearchedPlayer && "Players not found for " + playerName
-              }
-            />
-          )}
+          <PlayersList
+            players={players}
+            emptyListMessage={
+              hasSearchedPlayer && "Players not found for " + playerName
+            }
+            isFetching={isFetching}
+            error={error}
+          />
         </section>
       </Main>
     </Screen>
