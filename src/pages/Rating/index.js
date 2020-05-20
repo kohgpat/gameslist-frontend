@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { usePlayers } from "../../modules/Players/usePlayers";
+import React from "react";
+import { useTopPlayers } from "../../modules/Players/useTopPlayers";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
@@ -7,11 +7,7 @@ import Title from "../../components/Title";
 import PlayersList from "../../components/PlayersList";
 
 const Rating = () => {
-  const { data: players, refetch } = usePlayers();
-
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
+  const { data: players } = useTopPlayers();
 
   return (
     <Screen>
