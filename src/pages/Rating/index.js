@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { usePlayers } from "../../modules/Players/usePlayers";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
@@ -7,7 +7,11 @@ import Title from "../../components/Title";
 import PlayersList from "../../components/PlayersList";
 
 const Rating = () => {
-  const { data: players } = usePlayers();
+  const { data: players, refetch } = usePlayers();
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return (
     <Screen>

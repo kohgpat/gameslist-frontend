@@ -11,8 +11,13 @@ export const getPlayers = async (key, params) => {
   return data;
 };
 
-export const getTopPlayers = async () => {
-  const { data } = await axios.get("http://localhost:3001/players/top");
+export const getTopPlayers = async (key, params) => {
+  const { data } = await axios.get("http://localhost:3001/players/top", {
+    params,
+    paramsSerializer: (params) => {
+      return qs.stringify(params, { skipNull: true, skipEmptyString: true });
+    },
+  });
   return data;
 };
 
