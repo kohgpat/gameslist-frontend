@@ -5,7 +5,7 @@ import s from "./index.module.css";
 
 const PlayersSearchForm = ({ inputRef, onSubmit }) => {
   return (
-    <form className={s.form} onSubmit={onSubmit}>
+    <form className={s.form} autoComplete="off" onSubmit={onSubmit}>
       <Input
         id="players-search"
         placeholder="Search player by name"
