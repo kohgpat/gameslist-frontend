@@ -12,13 +12,14 @@ const Players = () => {
   const [playerName, setPlayersName] = useState("");
   const playerNameRef = useRef();
 
-  const { data: players, refetch, isFetching, error } = usePlayers({
+  const { data: players, isFetching, error, refetch } = usePlayers({
     name: playerName,
   });
 
   useEffect(() => {
     playerNameRef.current.focus();
-  }, []);
+    refetch();
+  }, [refetch]);
 
   const onPlayerSearch = (e) => {
     e.preventDefault();
@@ -39,9 +40,7 @@ const Players = () => {
           />
           <PlayersList
             players={players}
-            emptyListMessage={
-              hasSearchedPlayer && "Players not found"
-            }
+            emptyListMessage={hasSearchedPlayer && "Players not found"}
             isFetching={isFetching}
             error={error}
           />

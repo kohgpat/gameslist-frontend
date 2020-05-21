@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGames } from "../../modules/Games/useGames";
 import { useTopPlayers } from "../../modules/Players/useTopPlayers";
 import Screen from "../../components/Screen";
@@ -13,12 +13,19 @@ const Index = () => {
     data: games,
     isFetching: isFetchingGames,
     error: fetchingGamesError,
+    refetch: gamesRefetch,
   } = useGames();
   const {
     data: topPlayers,
     isFetching: isFetchingTopPlayers,
     error: fetchingTopPlayersError,
+    refetch: topPlayersRefetch,
   } = useTopPlayers();
+
+  useEffect(() => {
+    topPlayersRefetch();
+    gamesRefetch();
+  }, [topPlayersRefetch, gamesRefetch]);
 
   return (
     <Screen>

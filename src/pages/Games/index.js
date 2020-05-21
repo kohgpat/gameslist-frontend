@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGames } from "../../modules/Games/useGames";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
@@ -7,7 +7,11 @@ import Title from "../../components/Title";
 import GamesList from "../../components/GamesList";
 
 const Games = () => {
-  const { data: games, isFetching, error } = useGames();
+  const { data: games, isFetching, error, refetch } = useGames();
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return (
     <Screen>

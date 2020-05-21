@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FiPlusCircle, FiArrowUpCircle } from "react-icons/fi";
 import { useNewGame } from "../../modules/NewGame/useNewGame";
 import { usePlayers } from "../../modules/Players/usePlayers";
@@ -14,7 +14,7 @@ import ValidationDialog from "../../components/ValidationDialog";
 import s from "./index.module.css";
 
 const NewGame = () => {
-  const { data: players } = usePlayers();
+  const { data: players, refetch } = usePlayers();
   const {
     playersInGame,
     winner,
@@ -27,6 +27,10 @@ const NewGame = () => {
     setValidationDialogVisible,
     submitGame,
   } = useNewGame();
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return (
     <Screen>
