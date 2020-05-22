@@ -53,6 +53,7 @@ const NewGame = () => {
                 type="button"
                 onClick={togglePlayersSelect}
                 disabled={playersInGame.length === 4}
+                title="Open players select dialog"
               >
                 <FiPlusCircle className={s.addPlayerButtonIcon} />
               </IconButton>
