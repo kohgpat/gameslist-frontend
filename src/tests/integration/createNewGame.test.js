@@ -1,20 +1,22 @@
 import React from "react";
-import {
-  render,
-  screen,
-  fireEvent,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import axios from "axios";
-import { createMemoryHistory } from "history";
-import { Router } from "react-router-dom";
+// import { createMemoryHistory } from "history";
+// import { Router } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useFlashMessage } from "../../modules/FlashMessage/useFlashMessage";
-import App from "../../App";
+import Page from "../../pages/NewGame";
+jest.mock("react-router-dom", () => ({
+  useHistory: () => ({
+    push: jest.fn(),
+  }),
+  Link: () => <div />,
+}));
 jest.mock("axios");
 jest.mock("../../modules/FlashMessage/useFlashMessage");
 
 describe("NewGame", () => {
-  it("successfully create new game", async () => {
+  test("shows validation dialog if players are not selected", async () => {
     axios.get.mockImplementationOnce(() => {
       return Promise.resolve({
         data: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
@@ -29,14 +31,42 @@ describe("NewGame", () => {
       hideMessage: jest.fn(),
     });
 
-    const history = createMemoryHistory();
+    render(<Page />);
 
-    history.push("/new-game");
+    fireEvent.click(screen.getByRole("button", { name: /submit game/i }));
+
+    await waitFor(() =>
+      expect(screen.getByText(/validation dialog/i)).toBeInTheDocument()
+    );
+
+    expect(
+      screen.getByText(/You have forgot to add players to the game/i)
+    ).toBeInTheDocument();
+
+    // screen.debug();
+  });
+
+  test.skip("successfully create new game", async () => {
+    axios.get.mockImplementationOnce(() => {
+      return Promise.resolve({
+        data: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+      });
+    });
+
+    useFlashMessage.mockReturnValue({
+      isVisible: false,
+      variant: undefined,
+      message: undefined,
+      showMessage: jest.fn(),
+      hideMessage: jest.fn(),
+    });
+
+    // const history = createMemoryHistory();
 
     render(
-      <Router history={history}>
-        <App />
-      </Router>
+      // <Router history={history}>
+      <Page />
+      // </Router>
     );
 
     const submitButton = await screen.findByRole("button", {
@@ -90,7 +120,7 @@ describe("NewGame", () => {
 
     fireEvent.click(submitButton);
 
-    await waitForElementToBeRemoved(() => screen.getByText(/New Game/i));
+    console.log({ location: window.location.href });
 
     // expect(screen.getByText(/Games/i)).toBeInTheDocument();
   });
