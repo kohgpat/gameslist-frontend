@@ -2,19 +2,14 @@ import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
-// import { createMemoryHistory } from "history";
-// import { Router } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import { useFlashMessage } from "../../modules/FlashMessage/useFlashMessage";
+import { useCreateNewGame } from "../../modules/NewGame/useCreateNewGame";
 import Page from "../../pages/NewGame";
-jest.mock("react-router-dom", () => ({
-  useHistory: () => ({
-    push: jest.fn(),
-  }),
-  Link: () => <div />,
-}));
+
 jest.mock("axios");
 jest.mock("../../modules/FlashMessage/useFlashMessage");
+jest.mock("../../modules/NewGame/useCreateNewGame");
 
 describe("NewGame", () => {
   test("shows validation dialog if players are not selected", async () => {
@@ -32,7 +27,13 @@ describe("NewGame", () => {
       hideMessage: jest.fn(),
     });
 
-    render(<Page />);
+    useCreateNewGame.mockReturnValue([jest.fn()]);
+
+    render(
+      <MemoryRouter>
+        <Page />
+      </MemoryRouter>
+    );
 
     expect(
       screen.getByText(/No players selected. Please add up to 4 players./i)
@@ -64,7 +65,13 @@ describe("NewGame", () => {
       hideMessage: jest.fn(),
     });
 
-    render(<Page />);
+    useCreateNewGame.mockReturnValue([jest.fn()]);
+
+    render(
+      <MemoryRouter>
+        <Page />
+      </MemoryRouter>
+    );
 
     const openSelectDialogIconButton = await screen.findByRole("button", {
       name: /Open players select dialog/i,
@@ -91,7 +98,7 @@ describe("NewGame", () => {
     ).toBeInTheDocument();
   });
 
-  test.skip("successfully create new game", async () => {
+  test("successfully create new game", async () => {
     axios.get.mockImplementationOnce(() => {
       return Promise.resolve({
         data: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
@@ -106,12 +113,13 @@ describe("NewGame", () => {
       hideMessage: jest.fn(),
     });
 
-    // const history = createMemoryHistory();
+    const createNewGameMock = jest.fn();
+    useCreateNewGame.mockReturnValue([createNewGameMock]);
 
     render(
-      // <Router history={history}>
-      <Page />
-      // </Router>
+      <MemoryRouter>
+        <Page />
+      </MemoryRouter>
     );
 
     const submitButton = await screen.findByRole("button", {
@@ -122,23 +130,7 @@ describe("NewGame", () => {
       screen.getByText(/No players selected. Please add up to 4 players./i)
     ).toBeInTheDocument();
 
-    userEvent.click(submitButton);
-
-    // Check validation
-    expect(screen.getByText(/validation dialog/i)).toBeInTheDocument();
-    expect(
-      screen.getByText(/You have forgot to add players to the game/i)
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/You have forgot to select a winner/i)
-    ).toBeInTheDocument();
-
-    // close validation dialog
-    const closeValidationDialogButton = await screen.findByRole("button");
-    userEvent.click(closeValidationDialogButton);
-    expect(screen.queryByText(/validation dialog/i)).not.toBeInTheDocument();
-
-    // select player
+    // select a player
     const openSelectDialogIconButton = await screen.findByRole("button", {
       name: /Open players select dialog/i,
     });
@@ -152,21 +144,16 @@ describe("NewGame", () => {
     // select a winner
     userEvent.click(screen.getByRole("button", { name: /Alice/i }));
 
-    // submit the game
-    axios.post.mockImplementationOnce(() => {
-      return Promise.resolve({
-        data: {
-          id: 1,
-          players: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
-          winner: { id: 1, name: "Alice", stats: { wins: 0 } },
-        },
-      });
-    });
+    expect(screen.queryByText(/No winner selected/i)).not.toBeInTheDocument();
 
+    // submit the game
     userEvent.click(submitButton);
 
-    console.log({ location: window.location.href });
-
-    // expect(screen.getByText(/Games/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(createNewGameMock).toBeCalledWith({
+        players: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+        winner: { id: 1, name: "Alice", stats: { wins: 0 } },
+      });
+    });
   });
 });
