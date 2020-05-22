@@ -1,17 +1,17 @@
 import React from "react";
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { useFlashMessage } from "../../../modules/FlashMessage/useFlashMessage";
-import Page from "../../../pages/NewGame";
-jest.mock("react-router-dom", () => ({
-  useHistory: () => ({
-    push: jest.fn(),
-  }),
-  Link: () => <div />,
-}));
+import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
+import { useFlashMessage } from "../../modules/FlashMessage/useFlashMessage";
+import App from "../../App";
 jest.mock("axios");
-jest.mock("../../../modules/FlashMessage/useFlashMessage");
+jest.mock("../../modules/FlashMessage/useFlashMessage");
 
 describe("NewGame", () => {
   it("successfully create new game", async () => {
@@ -28,7 +28,16 @@ describe("NewGame", () => {
       showMessage: jest.fn(),
       hideMessage: jest.fn(),
     });
-    render(<Page />);
+
+    const history = createMemoryHistory();
+
+    history.push("/new-game");
+
+    render(
+      <Router history={history}>
+        <App />
+      </Router>
+    );
 
     const submitButton = await screen.findByRole("button", {
       name: /submit game/i,
@@ -80,5 +89,9 @@ describe("NewGame", () => {
     });
 
     fireEvent.click(submitButton);
+
+    await waitForElementToBeRemoved(() => screen.getByText(/New Game/i));
+
+    // expect(screen.getByText(/Games/i)).toBeInTheDocument();
   });
 });
