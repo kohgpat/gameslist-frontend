@@ -34,6 +34,10 @@ describe("NewGame", () => {
 
     render(<Page />);
 
+    expect(
+      screen.getByText(/No players selected. Please add up to 4 players./i)
+    ).toBeInTheDocument();
+
     userEvent.click(screen.getByRole("button", { name: /submit game/i }));
 
     await waitFor(() =>
