@@ -69,7 +69,7 @@ export const useNewGame = () => {
   };
 
   const togglePlayerInGame = (player) => {
-    if (state.playersInGame.includes(player)) {
+    if (state.playersInGame.find((p) => p.id === player.id)) {
       removeFromGame(player);
     } else {
       addToGame(player);
