@@ -10,13 +10,13 @@ const DialogBar = ({ title, onDismiss, withDoneCondition }) => {
       <label className={s.dialogBarTitle}>{title}</label>
 
       {withDoneCondition && (
-        <Button type="button" small onClick={onDismiss}>
+        <Button type="button" small onClick={onDismiss} title="Done">
           Done
         </Button>
       )}
 
       {!withDoneCondition && (
-        <IconButton type="button" big onClick={onDismiss}>
+        <IconButton type="button" big onClick={onDismiss} title="Close">
           <FiXCircle />
         </IconButton>
       )}
