@@ -98,6 +98,81 @@ describe("NewGame", () => {
     ).toBeInTheDocument();
   });
 
+  test("it should keep selected players after new player dialog was displayed", async () => {
+    axios.get.mockImplementationOnce(() => {
+      return Promise.resolve({
+        data: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+      });
+    });
+
+    useFlashMessage.mockReturnValue({
+      isVisible: false,
+      variant: undefined,
+      message: undefined,
+      showMessage: jest.fn(),
+      hideMessage: jest.fn(),
+    });
+
+    useCreateNewGame.mockReturnValue([jest.fn()]);
+
+    render(
+      <MemoryRouter>
+        <Page />
+      </MemoryRouter>
+    );
+
+    await waitFor(() =>
+      expect(screen.getByText(/New Game/i)).toBeInTheDocument()
+    );
+
+    userEvent.click(
+      screen.getByRole("button", { name: /Open players select dialog/i })
+    );
+    expect(screen.getByText(/Select a player/i)).toBeInTheDocument();
+
+    userEvent.click(screen.getByRole("button", { name: /Alice/i }));
+
+    userEvent.click(
+      screen.getByRole("button", { name: /Add new player to the list/i })
+    );
+
+    await waitFor(() =>
+      expect(
+        screen.getByPlaceholderText(/Enter player name/i)
+      ).toBeInTheDocument()
+    );
+
+    axios.post.mockImplementationOnce(() => {
+      return Promise.resolve({
+        data: { id: 2, name: "Bob", stats: { wins: 0 } },
+      });
+    });
+
+    axios.get.mockImplementationOnce(() => {
+      return Promise.resolve({
+        data: [
+          { id: 1, name: "Alice", stats: { wins: 0 } },
+          { id: 2, name: "Bob", stats: { wins: 0 } },
+        ],
+      });
+    });
+
+    userEvent.type(screen.getByPlaceholderText(/Enter player name/i), "Bob");
+    userEvent.click(screen.getByRole("button", { name: /Add new player/i }));
+
+    await waitFor(() =>
+      expect(screen.queryByText(/Add new player/)).not.toBeInTheDocument()
+    );
+
+    expect(screen.getByRole("button", { name: /Done/i })).toBeInTheDocument();
+
+    userEvent.click(screen.getByRole("button", { name: /Alice/i }));
+
+    expect(
+      screen.queryByRole("button", { name: /Done/i })
+    ).not.toBeInTheDocument();
+  });
+
   test("successfully create new game", async () => {
     axios.get.mockImplementationOnce(() => {
       return Promise.resolve({
