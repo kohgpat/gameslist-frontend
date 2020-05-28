@@ -4,6 +4,7 @@ import { FlashMessageProvider } from "./contexts/FlashMessage";
 import FlashMessage from "./components/FlashMessage";
 import Index from "./pages/Index";
 import Players from "./pages/Players";
+import PlayersShow from "./pages/PlayersShow";
 import Games from "./pages/Games";
 import NewGame from "./pages/NewGame";
 import Rating from "./pages/Rating";
@@ -17,6 +18,10 @@ function App() {
         <Switch>
           <Route path="/new-game">
             <NewGame />
+          </Route>
+
+          <Route path="/players/:id">
+            <PlayersShow />
           </Route>
 
           <Route path="/players">
