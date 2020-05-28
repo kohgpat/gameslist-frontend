@@ -37,7 +37,6 @@ const Players = () => {
   }, [refetch]);
 
   useEffect(() => {
-    playerNameRef.current.focus();
     refetch();
   }, [page, refetch]);
 
