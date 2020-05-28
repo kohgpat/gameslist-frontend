@@ -37,7 +37,6 @@ const Index = () => {
             players={topPlayers}
             isFetching={isFetchingTopPlayers}
             error={fetchingTopPlayersError}
-            asLinks
           />
         </section>
 
