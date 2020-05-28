@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { FiPlusCircle, FiArrowUpCircle } from "react-icons/fi";
 import { useNewGame } from "../../modules/NewGame/useNewGame";
 import { usePlayers } from "../../modules/Players/usePlayers";
+import { usePagination } from "../../modules/Pagination/usePagination";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
@@ -14,10 +15,13 @@ import ValidationDialog from "../../components/ValidationDialog";
 import s from "./index.module.css";
 
 const NewGame = () => {
+  const { page, pageSize, handlePageChange } = usePagination();
+
   const {
     data: { players, hasMore } = { players: [], hasMore: false },
     refetch,
-  } = usePlayers();
+  } = usePlayers({ page, pageSize });
+
   const {
     playersInGame,
     winner,
@@ -33,7 +37,7 @@ const NewGame = () => {
 
   useEffect(() => {
     refetch();
-  }, [refetch]);
+  }, [page, refetch]);
 
   return (
     <Screen>
@@ -87,6 +91,7 @@ const NewGame = () => {
             isVisible={playersSelectVisible}
             onDismiss={() => setPlayersSelectVisible(false)}
             players={players}
+            playersPagination={{ page, pageSize, hasMore, handlePageChange }}
             playersInGame={playersInGame}
             onSelect={(player) => togglePlayerInGame(player)}
           />

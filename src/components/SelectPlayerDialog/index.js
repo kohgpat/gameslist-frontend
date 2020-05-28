@@ -6,18 +6,22 @@ import DialogBar from "../DialogBar";
 import AddPlayerDialog from "../AddPlayerDialog";
 import IconButton from "../IconButton";
 import Input from "../Input";
+import Pagination from "../Pagination";
 import s from "./index.module.css";
 
 const SelectPlayerDialog = ({
   isVisible,
   onDismiss,
   players,
+  playersPagination,
   playersInGame,
   onSelect,
 }) => {
   const [input, setInput] = useState("");
   const [addPlayerDialogVisible, setAddPlayerDialogVisible] = useState(false);
   const inputRef = useRef();
+
+  const { page, pageSize, hasMore, handlePageChange } = playersPagination;
 
   const onPlayerSelect = (player) => {
     onSelect(player);
@@ -79,6 +83,13 @@ const SelectPlayerDialog = ({
               </li>
             ))}
         </ul>
+
+        <Pagination
+          page={page}
+          pageSize={pageSize}
+          hasMore={hasMore}
+          onPageSelect={handlePageChange}
+        />
       </Dialog>
 
       <AddPlayerDialog
