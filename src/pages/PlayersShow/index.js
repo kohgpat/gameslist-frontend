@@ -5,6 +5,9 @@ import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
+import LoadingItem from "../../components/LoadingItem";
+import HelpMessage from "../../components/HelpMessage";
+import s from "./index.module.css";
 
 const PlayersShow = () => {
   const params = useParams();
@@ -19,9 +22,24 @@ const PlayersShow = () => {
       <Topbar />
       <Main>
         <section>
-          <Title as="h4">Player</Title>
+          {isFetching && (
+            <>
+              <LoadingItem className={s.loadingItem} />
+              <LoadingItem className={s.loadingItem} />
+              <LoadingItem className={s.loadingItem} />
+            </>
+          )}
 
-          {player && <div>{player.name}</div>}
+          {error && (
+            <HelpMessage message="Error occured. Please try to reload page." />
+          )}
+
+          {player && (
+            <>
+              <Title as="h4">Player</Title>
+              {player.name}
+            </>
+          )}
         </section>
       </Main>
     </Screen>
