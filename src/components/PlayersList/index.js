@@ -11,6 +11,7 @@ const PlayersList = ({
   emptyListMessage,
   isFetching,
   error,
+  asLinks,
 }) => {
   if (isFetching) {
     return (
@@ -35,6 +36,7 @@ const PlayersList = ({
             selected={selected && selected.id === player.id}
             onClick={onClick}
             roundBorders
+            asLink={asLinks}
           />
         </li>
       ))}
@@ -48,6 +50,7 @@ PlayersList.defaultProps = {
   players: [],
   emptyListMessage:
     "No players found. You could add a player on the new game page.",
+  asLinks: false,
 };
 
 export default PlayersList;

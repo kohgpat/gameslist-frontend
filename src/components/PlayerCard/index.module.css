@@ -7,3 +7,10 @@
 .playerRoundBorders {
   border-radius: 0.25rem;
 }
+
+.playerLink {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  width: 100%;
+}
