@@ -10,7 +10,7 @@ import GamesList from "../../components/GamesList";
 
 const Index = () => {
   const {
-    data: games,
+    data: { games, hasMore } = { games: [], hasMore: false },
     isFetching: isFetchingGames,
     error: fetchingGamesError,
     refetch: gamesRefetch,

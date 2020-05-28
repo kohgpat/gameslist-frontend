@@ -14,7 +14,10 @@ import ValidationDialog from "../../components/ValidationDialog";
 import s from "./index.module.css";
 
 const NewGame = () => {
-  const { data: players, refetch } = usePlayers();
+  const {
+    data: { players, hasMore } = { players: [], hasMore: false },
+    refetch,
+  } = usePlayers();
   const {
     playersInGame,
     winner,
