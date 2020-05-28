@@ -21,7 +21,7 @@ export const getTopPlayers = async (key, params) => {
   return data;
 };
 
-export const getPlayer = async (id) => {
+export const getPlayer = async (key, id) => {
   const { data } = await axios.get("http://192.168.0.4:3001/players/" + id);
   return data;
 };
