@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useGames } from "../../modules/Games/useGames";
+import { usePagination } from "../../modules/Pagination/usePagination";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
@@ -8,12 +9,7 @@ import GamesList from "../../components/GamesList";
 import Pagination from "../../components/Pagination";
 
 const Games = () => {
-  const [page, setPage] = useState(0);
-  const [pageSize] = useState(10);
-
-  const handlePageChange = (page) => {
-    setPage(page);
-  };
+  const { page, pageSize, handlePageChange } = usePagination();
 
   const {
     data: { games, hasMore } = { games: [], hasMore: false },

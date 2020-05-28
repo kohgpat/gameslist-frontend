@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { usePlayers } from "../../modules/Players/usePlayers";
+import { usePagination } from "../../modules/Pagination/usePagination";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";
@@ -13,12 +14,7 @@ const Players = () => {
   const [playerName, setPlayersName] = useState("");
   const playerNameRef = useRef();
 
-  const [page, setPage] = useState(0);
-  const [pageSize] = useState(10);
-
-  const handlePageChange = (page) => {
-    setPage(page);
-  };
+  const { page, pageSize, handlePageChange } = usePagination();
 
   const {
     data: { players, hasMore } = { players: [], hasMore: false },
