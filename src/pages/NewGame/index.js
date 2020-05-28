@@ -8,7 +8,7 @@ import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import IconButton from "../../components/IconButton";
 import Button from "../../components/Button";
-import GamePlayersList from "../../components/GamePlayersList";
+import InGamePlayersList from "../../components/InGamePlayersList";
 import SelectPlayerDialog from "../../components/SelectPlayerDialog";
 import ValidationDialog from "../../components/ValidationDialog";
 import s from "./index.module.css";
@@ -60,7 +60,7 @@ const NewGame = () => {
             )}
           </div>
 
-          <GamePlayersList
+          <InGamePlayersList
             players={playersInGame}
             winner={winner}
             onSelect={setWinner}

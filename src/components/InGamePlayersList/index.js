@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import s from "./index.module.css";
 
-const GamePlayersList = ({ players, winner, onSelect }) => {
+const InGamePlayersList = ({ players, winner, onSelect }) => {
   if (players.length === 0) {
     return (
       <div className={s.emptyListMessage}>
@@ -31,4 +31,4 @@ const GamePlayersList = ({ players, winner, onSelect }) => {
   );
 };
 
-export default GamePlayersList;
+export default InGamePlayersList;
