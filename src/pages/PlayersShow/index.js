@@ -7,6 +7,7 @@ import Topbar from "../../components/Topbar";
 import Title from "../../components/Title";
 import LoadingItem from "../../components/LoadingItem";
 import HelpMessage from "../../components/HelpMessage";
+import PlayerDetails from "../../components/PlayerDetails";
 import s from "./index.module.css";
 
 const PlayersShow = () => {
@@ -37,7 +38,7 @@ const PlayersShow = () => {
           {player && (
             <>
               <Title as="h4">Player</Title>
-              {player.name}
+              <PlayerDetails player={player} />
             </>
           )}
         </section>
