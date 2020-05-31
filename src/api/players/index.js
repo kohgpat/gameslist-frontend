@@ -1,8 +1,11 @@
 import axios from "axios";
 import qs from "query-string";
+import { getApiUrl } from "../utils";
+
+const API_URL = getApiUrl();
 
 export const getPlayers = async (key, params) => {
-  const { data } = await axios.get("http://192.168.0.4:3001/players", {
+  const { data } = await axios.get(`${API_URL}/players`, {
     params,
     paramsSerializer: (params) => {
       return qs.stringify(params, { skipNull: true, skipEmptyString: true });
@@ -12,7 +15,7 @@ export const getPlayers = async (key, params) => {
 };
 
 export const getTopPlayers = async (key, params) => {
-  const { data } = await axios.get("http://192.168.0.4:3001/players/top", {
+  const { data } = await axios.get(`${API_URL}/players/top`, {
     params,
     paramsSerializer: (params) => {
       return qs.stringify(params, { skipNull: true, skipEmptyString: true });
@@ -22,11 +25,11 @@ export const getTopPlayers = async (key, params) => {
 };
 
 export const getPlayer = async (key, id) => {
-  const { data } = await axios.get("http://192.168.0.4:3001/players/" + id);
+  const { data } = await axios.get(`${API_URL}/players/` + id);
   return data;
 };
 
 export const createPlayer = async (player) => {
-  const { data } = await axios.post("http://192.168.0.4:3001/players", player);
+  const { data } = await axios.post(`${API_URL}/players`, player);
   return data;
 };
