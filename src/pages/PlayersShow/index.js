@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { usePlayer } from "../../modules/Players/usePlayer";
+import { usePlayer } from "../../hooks/Players/usePlayer";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";

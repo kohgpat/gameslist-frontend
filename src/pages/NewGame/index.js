@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { FiPlusCircle, FiArrowUpCircle } from "react-icons/fi";
-import { useNewGame } from "../../modules/NewGame/useNewGame";
-import { usePlayers } from "../../modules/Players/usePlayers";
-import { usePagination } from "../../modules/Pagination/usePagination";
+import { useNewGame } from "../../hooks/NewGame/useNewGame";
+import { usePlayers } from "../../hooks/Players/usePlayers";
+import { usePagination } from "../../hooks/Pagination/usePagination";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";

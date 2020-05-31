@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import { FiXCircle } from "react-icons/fi";
-import { useFlashMessage } from "../../modules/FlashMessage/useFlashMessage";
+import { useFlashMessage } from "../../hooks/FlashMessage/useFlashMessage";
 import IconButton from "../IconButton";
 import s from "./index.module.css";
 

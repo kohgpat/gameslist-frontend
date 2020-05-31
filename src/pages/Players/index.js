@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { usePlayers } from "../../modules/Players/usePlayers";
-import { usePagination } from "../../modules/Pagination/usePagination";
+import { usePlayers } from "../../hooks/Players/usePlayers";
+import { usePagination } from "../../hooks/Pagination/usePagination";
 import Screen from "../../components/Screen";
 import Main from "../../components/Main";
 import Topbar from "../../components/Topbar";

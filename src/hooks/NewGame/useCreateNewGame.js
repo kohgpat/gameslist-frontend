@@ -1,7 +1,7 @@
 import { useMutation, queryCache } from "react-query";
 import { useHistory } from "react-router-dom";
 import { createGame } from "../../api/games";
-import { useFlashMessage } from "../../modules/FlashMessage/useFlashMessage";
+import { useFlashMessage } from "../../hooks/FlashMessage/useFlashMessage";
 
 export const useCreateNewGame = () => {
   const { showMessage } = useFlashMessage();

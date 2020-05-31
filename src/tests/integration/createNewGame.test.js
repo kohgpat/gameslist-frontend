@@ -3,13 +3,13 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import { MemoryRouter } from "react-router-dom";
-import { useFlashMessage } from "../../modules/FlashMessage/useFlashMessage";
-import { useCreateNewGame } from "../../modules/NewGame/useCreateNewGame";
+import { useFlashMessage } from "../../hooks/FlashMessage/useFlashMessage";
+import { useCreateNewGame } from "../../hooks/NewGame/useCreateNewGame";
 import Page from "../../pages/NewGame";
 
 jest.mock("axios");
-jest.mock("../../modules/FlashMessage/useFlashMessage");
-jest.mock("../../modules/NewGame/useCreateNewGame");
+jest.mock("../../hooks/FlashMessage/useFlashMessage");
+jest.mock("../../hooks/NewGame/useCreateNewGame");
 
 describe("NewGame", () => {
   test("shows validation dialog if players are not selected", async () => {

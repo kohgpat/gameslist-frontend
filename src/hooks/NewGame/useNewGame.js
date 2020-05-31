@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { useCreateNewGame } from "../../modules/NewGame/useCreateNewGame";
+import { useCreateNewGame } from "../../hooks/NewGame/useCreateNewGame";
 
 const reducer = (state, action) => {
   switch (action.type) {

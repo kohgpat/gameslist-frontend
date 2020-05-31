@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useAddPlayer } from "../../modules/Players/useAddPlayer";
+import { useAddPlayer } from "../../hooks/Players/useAddPlayer";
 import Dialog from "../Dialog";
 import DialogBar from "../DialogBar";
 import Input from "../Input";
