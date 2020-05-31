@@ -15,7 +15,10 @@ describe("NewGame", () => {
   test("shows validation dialog if players are not selected", async () => {
     axios.get.mockImplementationOnce(() => {
       return Promise.resolve({
-        data: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+        data: {
+          players: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+          hasMore: false,
+        },
       });
     });
 
@@ -53,7 +56,10 @@ describe("NewGame", () => {
   test("shows validation dialog if a winner is not selected", async () => {
     axios.get.mockImplementationOnce(() => {
       return Promise.resolve({
-        data: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+        data: {
+          players: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+          hasMore: false,
+        },
       });
     });
 
@@ -73,11 +79,19 @@ describe("NewGame", () => {
       </MemoryRouter>
     );
 
+    // TODO: Remove the variable
     const openSelectDialogIconButton = await screen.findByRole("button", {
       name: /Open players select dialog/i,
     });
     userEvent.click(openSelectDialogIconButton);
     expect(screen.getByText(/select a player/i)).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole("button", { name: /Alice/i })
+      ).toBeInTheDocument();
+    });
+
     userEvent.click(screen.getByRole("button", { name: /Alice/i }));
     userEvent.click(screen.getByRole("button", { name: /Done/i }));
 
@@ -101,7 +115,10 @@ describe("NewGame", () => {
   test("it should keep selected players after new player dialog was displayed", async () => {
     axios.get.mockImplementationOnce(() => {
       return Promise.resolve({
-        data: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+        data: {
+          players: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+          hasMore: false,
+        },
       });
     });
 
@@ -150,10 +167,13 @@ describe("NewGame", () => {
 
     axios.get.mockImplementationOnce(() => {
       return Promise.resolve({
-        data: [
-          { id: 1, name: "Alice", stats: { wins: 0 } },
-          { id: 2, name: "Bob", stats: { wins: 0 } },
-        ],
+        data: {
+          players: [
+            { id: 1, name: "Alice", stats: { wins: 0 } },
+            { id: 2, name: "Bob", stats: { wins: 0 } },
+          ],
+          hasMore: false,
+        },
       });
     });
 
@@ -176,7 +196,10 @@ describe("NewGame", () => {
   test("successfully create new game", async () => {
     axios.get.mockImplementationOnce(() => {
       return Promise.resolve({
-        data: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+        data: {
+          players: [{ id: 1, name: "Alice", stats: { wins: 0 } }],
+          hasMore: false,
+        },
       });
     });
 
