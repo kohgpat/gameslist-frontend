@@ -79,11 +79,19 @@ describe("NewGame", () => {
       </MemoryRouter>
     );
 
-    // TODO: Remove the variable
-    const openSelectDialogIconButton = await screen.findByRole("button", {
-      name: /Open players select dialog/i,
+    await waitFor(() => {
+      expect(
+        screen.getByRole("button", {
+          name: /Open players select dialog/i,
+        })
+      ).toBeInTheDocument();
     });
-    userEvent.click(openSelectDialogIconButton);
+
+    userEvent.click(
+      screen.getByRole("button", {
+        name: /Open players select dialog/i,
+      })
+    );
     expect(screen.getByText(/select a player/i)).toBeInTheDocument();
 
     await waitFor(() => {
