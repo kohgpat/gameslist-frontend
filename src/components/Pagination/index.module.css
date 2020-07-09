@@ -5,5 +5,22 @@
 }
 
 .page {
-  margin: 0 1rem;
+  font-weight: 600;
+  margin: 0 1.5rem;
+}
+
+.control {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #000;
+}
+
+.controlDisabled {
+  color: #f1f1f1;
+  cursor: not-allowed;
 }
