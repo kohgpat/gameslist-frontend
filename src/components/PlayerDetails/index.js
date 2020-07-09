@@ -11,9 +11,15 @@ const PlayerDetails = ({ player }) => {
       <h1 className={s.playerName}>{player.name}</h1>
 
       <section className={s.stats}>
-        <h4 className={s.statName}>Number of wins</h4>
+        <div className={s.stat}>
+          <h4 className={s.statName}>Number of wins</h4>
+          <span className={s.statValue}>{player.stats.wins}</span>
+        </div>
 
-        <span className={s.statValue}>{player.stats.wins}</span>
+        <div className={s.stat}>
+          <h4 className={s.statName}>Number of games</h4>
+          <span className={s.statValue}>{player.stats.numberOfGames}</span>
+        </div>
       </section>
     </div>
   );
