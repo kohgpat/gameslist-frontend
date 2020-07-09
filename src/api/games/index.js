@@ -15,7 +15,7 @@ export const getGames = async (key, params) => {
   return data;
 };
 
-export const getGame = async (id) => {
+export const getGame = async (key, id) => {
   const { data } = await axios(`${API_URL}/games/` + id);
   return data;
 };

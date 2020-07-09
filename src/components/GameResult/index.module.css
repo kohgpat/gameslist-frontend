@@ -3,3 +3,10 @@
   border: 1px solid #f1f1f1;
   border-radius: 0.25rem;
 }
+
+.gameLink {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  width: 100%;
+}
