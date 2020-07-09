@@ -48,6 +48,10 @@ PlayersList.defaultProps = {
   players: [],
   emptyListMessage:
     "No players found. You could add a player on the new game page.",
+  selected: null,
+  isFetching: false,
+  error: false,
+  onClick: () => {},
 };
 
 export default PlayersList;
